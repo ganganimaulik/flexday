@@ -39,6 +39,7 @@ router.get("/:id", async (req, res) => {
 router.put(
   "/:id",
   oneOf([body("email").isEmail(), body("email").isEmpty()]),
+  oneOf([body("dob").isDate(), body("dob").isEmpty()]),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
